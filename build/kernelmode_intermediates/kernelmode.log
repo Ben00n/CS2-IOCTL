@@ -1,7 +1,7 @@
 ﻿  Building 'kernelmode' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
-  Stamping C:\Data\VisualStudioProjects\Benoon-Driver\build\kernelmode_intermediates\kernelmode.inf
-  Stamping [Version] section with DriverVer=04/17/2024,21.57.1.988
-  kernelmode.vcxproj -> C:\Data\VisualStudioProjects\Benoon-Driver\build\kernelmode.sys
+  Stamping C:\Data\GitProjects\IOCTL\build\kernelmode_intermediates\kernelmode.inf
+  Stamping [Version] section with DriverVer=04/18/2024,19.37.51.507
+  kernelmode.vcxproj -> C:\Data\GitProjects\IOCTL\build\kernelmode.sys
   Driver is 'Universal'.
   .........................
   Signability test complete.
@@ -13,7 +13,7 @@
   None
   
   Catalog generation complete.
-  C:\Data\VisualStudioProjects\Benoon-Driver\build\kernelmode\kernelmode.cat
+  C:\Data\GitProjects\IOCTL\build\kernelmode\kernelmode.cat
   Done Adding Additional Store
-  Successfully signed: C:\Data\VisualStudioProjects\Benoon-Driver\build\kernelmode\kernelmode.cat
+  Successfully signed: C:\Data\GitProjects\IOCTL\build\kernelmode\kernelmode.cat
   

@@ -1,1 +1,4 @@
-C:\Data\VisualStudioProjects\Benoon-Driver\usermode\src\main.cpp;C:\Data\VisualStudioProjects\Benoon-Driver\build\usermode_intermediates\main.obj
+C:\Data\GitProjects\IOCTL\usermode\include\process_utils.h;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\process_utils.h.obj
+C:\Data\GitProjects\IOCTL\usermode\src\driver_utils.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\driver_utils.obj
+C:\Data\GitProjects\IOCTL\usermode\src\main.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\main.obj
+C:\Data\GitProjects\IOCTL\usermode\src\process_utils.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\process_utils.obj

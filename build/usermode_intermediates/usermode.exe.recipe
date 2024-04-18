@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Data\VisualStudioProjects\Benoon-Driver\build\usermode.exe</FullPath>
+      <FullPath>C:\Data\GitProjects\IOCTL\build\usermode.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

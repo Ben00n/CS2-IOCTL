@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "C:\\Data\\GitProjects\\IOCTL\\build\\usermode_intermediates\\process_utils.h.obj",
+            "outputs": [
+                "C:\\Data\\GitProjects\\IOCTL\\build\\usermode_intermediates\\vc143.pdb",
+                "C:\\Data\\GitProjects\\IOCTL\\build\\usermode_intermediates\\",
+                "C:\\Data\\GitProjects\\IOCTL\\build\\usermode_intermediates\\process_utils.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "include\\process_utils.h",
+                    "source-path": "c:\\data\\gitprojects\\ioctl\\usermode\\include\\process_utils.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}

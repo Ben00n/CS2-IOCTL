@@ -1,1 +1,13 @@
-﻿  usermode.vcxproj -> C:\Data\VisualStudioProjects\Benoon-Driver\build\usermode.exe
+﻿  Scanning sources for module dependencies...
+cl : command line  warning D9025: overriding '/sdl' with '/GS-'
+  process_utils.h
+  Compiling...
+cl : command line  warning D9025: overriding '/sdl' with '/GS-'
+  process_utils.h
+cl : command line  warning D9025: overriding '/sdl' with '/GS-'
+  driver_utils.cpp
+  main.cpp
+C:\Data\GitProjects\IOCTL\usermode\src\driver_utils.cpp(6,26): warning C4312: 'reinterpret_cast': conversion from 'const DWORD' to 'HANDLE' of greater size
+  process_utils.cpp
+  Generating Code...
+  usermode.vcxproj -> C:\Data\GitProjects\IOCTL\build\usermode.exe

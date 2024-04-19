@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Data\GitProjects\IOCTL\build\kernelmode.sys</FullPath>
+      <FullPath>C:\Data\VisualStudioProjects\Benoon-Driver\build\kernelmode.sys</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

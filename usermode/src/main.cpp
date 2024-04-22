@@ -5,10 +5,10 @@
 int main() {
     std::cout << "Benoon!\n";
 
-    const DWORD pid = get_process_id(L"AutoHotKey.exe");
+    const DWORD pid = get_process_id(L"RumbleFighter.exe");
 
     if (pid == 0) {
-        std::cout << "Failed to find ahk\n";
+        std::cout << "Failed to find Rumble Fighter\n";
         std::cin.get();
         return 1;
     }

@@ -1,6 +1,6 @@
 ﻿  Building 'kernelmode' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping C:\Data\GitProjects\IOCTL\build\kernelmode_intermediates\kernelmode.inf
-  Stamping [Version] section with DriverVer=04/20/2024,23.34.34.495
+  Stamping [Version] section with DriverVer=04/22/2024,15.1.18.935
   kernelmode.vcxproj -> C:\Data\GitProjects\IOCTL\build\kernelmode.sys
   Driver is 'Universal'.
   .........................

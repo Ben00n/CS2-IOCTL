@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include <algorithm>
 
 DWORD get_process_id(const wchar_t* process_name) {
 	DWORD process_id = 0;
@@ -61,4 +62,16 @@ uintptr_t get_module_base(const DWORD pid, const wchar_t* module_name)
 	CloseHandle(snap_shot);
 
 	return module_base;
+}
+
+uintptr_t find_final_address(Driver& driver, uintptr_t base_address, std::vector<uintptr_t>& offsets)
+{
+	uintptr_t current_address = base_address;
+
+	for (const auto& offset : offsets)
+	{
+		current_address = driver.read_memory<uintptr_t>(current_address) + offset;
+	}
+
+	return current_address;
 }

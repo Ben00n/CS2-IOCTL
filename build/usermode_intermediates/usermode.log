@@ -1,6 +1,3 @@
 ﻿cl : command line  warning D9025: overriding '/sdl' with '/GS-'
-  driver.cpp
-C:\Data\GitProjects\IOCTL\usermode\src\driver.cpp(16,21): warning C4312: 'reinterpret_cast': conversion from 'DWORD' to 'HANDLE' of greater size
-  main.cpp
-  Generating Code...
+  helpers.cpp
   usermode.vcxproj -> C:\Data\GitProjects\IOCTL\build\usermode.exe

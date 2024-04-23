@@ -145,12 +145,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\driver.cpp" />
+    <ClCompile Include="src\memory.cpp" />
     <ClCompile Include="src\helpers.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\driver.h" />
+    <ClInclude Include="include\memory.h" />
     <ClInclude Include="include\helpers.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

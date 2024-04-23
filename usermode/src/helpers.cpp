@@ -64,7 +64,7 @@ uintptr_t get_module_base(const DWORD pid, const wchar_t* module_name)
 	return module_base;
 }
 
-uintptr_t find_final_address(Driver& driver, uintptr_t base_address, std::vector<uintptr_t>& offsets)
+uintptr_t find_final_address(Memory& driver, uintptr_t base_address, std::vector<uintptr_t>& offsets)
 {
 	uintptr_t current_address = base_address;
 

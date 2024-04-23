@@ -1,4 +1,4 @@
-#include "driver.h"
+#include "memory.h"
 #include "helpers.h"
 #include <iostream>
 
@@ -20,7 +20,7 @@ int main() {
         return 1;
     }
 
-    Driver driver(driverHandle, pid);
+    Memory driver(driverHandle, pid);
 
     int value = driver.read_memory<int>(0x02F42380);
     std::cout << value;

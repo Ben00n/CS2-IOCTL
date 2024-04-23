@@ -1,13 +1,7 @@
 ﻿  Building 'kernelmode' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping C:\Data\GitProjects\IOCTL\build\kernelmode_intermediates\kernelmode.inf
-  Stamping [Version] section with DriverVer=04/23/2024,12.57.4.328
-  driver.cpp
-  main.cpp
-  Generating Code...
+  Stamping [Version] section with DriverVer=04/23/2024,18.14.26.215
   kernelmode.vcxproj -> C:\Data\GitProjects\IOCTL\build\kernelmode.sys
-  Done Adding Additional Store
-  Successfully signed: C:\Data\GitProjects\IOCTL\build\kernelmode.sys
-  
   Driver is 'Universal'.
   .........................
   Signability test complete.

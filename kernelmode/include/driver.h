@@ -7,7 +7,7 @@ extern "C"
     NTKERNELAPI NTSTATUS MmCopyVirtualMemory(PEPROCESS SourceProcess, PVOID SourceAddress, PEPROCESS TargetProcess, PVOID TargetAddress, SIZE_T BufferSize, KPROCESSOR_MODE PreviousMode, PSIZE_T ReturnSize);
 }
 
-namespace driver
+namespace benoon_driver
 {
     namespace codes
     {
@@ -16,17 +16,17 @@ namespace driver
         constexpr ULONG write = CTL_CODE(FILE_DEVICE_UNKNOWN, 0x358, METHOD_BUFFERED, FILE_SPECIAL_ACCESS);
     }
 
-    struct Request
+    struct MemoryOperation
     {
-        HANDLE process_id;
-        PVOID target;
+        HANDLE process_handle;
+        PVOID address;
         PVOID buffer;
-        SIZE_T size;
-        SIZE_T return_size;
+        SIZE_T buffer_size;
+        SIZE_T bytes_transferred;
     };
 
-    NTSTATUS create(PDEVICE_OBJECT device_object, PIRP irp);
-    NTSTATUS close(PDEVICE_OBJECT device_object, PIRP irp);
-    NTSTATUS device_control(PDEVICE_OBJECT device_object, PIRP irp);
-    NTSTATUS driver_main(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path);
+    NTSTATUS create_handler(PDEVICE_OBJECT device_object, PIRP irp);
+    NTSTATUS close_handler(PDEVICE_OBJECT device_object, PIRP irp);
+    NTSTATUS control_handler(PDEVICE_OBJECT device_object, PIRP irp);
+    NTSTATUS driver_entry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path);
 }

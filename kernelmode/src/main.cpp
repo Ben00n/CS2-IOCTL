@@ -6,5 +6,5 @@ NTSTATUS DriverEntry()
     UNICODE_STRING driver_name = {};
     RtlInitUnicodeString(&driver_name, L"\\Driver\\BenoonDriver");
 
-    return IoCreateDriver(&driver_name, &driver::driver_main);
+    return IoCreateDriver(&driver_name, &benoon_driver::driver_entry);
 }

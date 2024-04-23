@@ -169,6 +169,7 @@
     <ClInclude Include="external\ImGui\imstb_truetype.h" />
     <ClInclude Include="include\memory.h" />
     <ClInclude Include="include\helpers.h" />
+    <ClInclude Include="include\offsets.h" />
     <ClInclude Include="include\render.h" />
     <ClInclude Include="include\vector.h" />
   </ItemGroup>

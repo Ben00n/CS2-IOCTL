@@ -167,6 +167,7 @@
     <ClInclude Include="external\ImGui\imstb_rectpack.h" />
     <ClInclude Include="external\ImGui\imstb_textedit.h" />
     <ClInclude Include="external\ImGui\imstb_truetype.h" />
+    <ClInclude Include="include\bone.h" />
     <ClInclude Include="include\memory.h" />
     <ClInclude Include="include\helpers.h" />
     <ClInclude Include="include\offsets.h" />

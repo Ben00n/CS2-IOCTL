@@ -15,7 +15,11 @@ ImU32 Color(RGB color)
 
 namespace Render
 {
-	void DrawRect(int x, int y, int w, int h, RGB color, int thickness)
+	void DrawLine(float x1, float x2, float y1, float y2, float thickness, RGB color)
+	{
+		ImGui::GetBackgroundDrawList()->AddLine(ImVec2(x1, y1), ImVec2(x2, y2), Color(color), thickness);
+	}
+	void DrawRect(int x, int y, int w, int h, RGB color, float thickness)
 	{
 		ImGui::GetBackgroundDrawList()->AddRect(ImVec2(x, y), ImVec2(x + w, y + h), Color(color), 0, 0, thickness);
 	}

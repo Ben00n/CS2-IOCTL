@@ -3,10 +3,12 @@
 #include "render.h"
 #include "offsets.h"
 #include "vector.h"
+#include "bone.h"
 #include <dwmapi.h>
 #include <d3d11.h>
 #include <iostream>
 #include <windowsx.h>
+
 
 #include "../external/ImGui/imgui.h"
 #include "../external/ImGui/imgui_impl_dx11.h"
@@ -202,6 +204,9 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show)
             if (!pCSPlayerPawn)
                 continue;
 
+            uintptr_t gameScene = driver.read_memory<uintptr_t>(pCSPlayerPawn + 0x318);
+            uintptr_t boneArray = driver.read_memory<uintptr_t>(gameScene + 0x160 + 0x80);
+
             int health = driver.read_memory<int>(pCSPlayerPawn + offsets::m_iHealth);
 
             if (health <= 0 || health > 100)
@@ -211,7 +216,7 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show)
                 continue;
 
             Vector3 origin = driver.read_memory<Vector3>(pCSPlayerPawn + offsets::m_vec_Origin);
-            Vector3 head = { origin.x, origin.y, origin.z + 75.f };
+            Vector3 head = driver.read_memory<Vector3>(boneArray + bones::head * 32);
 
             Vector3 screenPos = origin.World_To_Screen(view_matrix);
             Vector3 screenHead = head.World_To_Screen(view_matrix);
@@ -221,14 +226,20 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show)
 
             RGB enemyColor = { 255, 0, 255 };
 
-            Render::DrawRect(
-                screenHead.x - width / 2,
-                screenHead.y,
-                width,
-                height,
-                enemyColor,
-                1.5
-            );
+            for (int i = 0; i < sizeof(boneConnections) / sizeof(boneConnections[0]); i++)
+            {
+                int bone1 = boneConnections[i].bone1;
+                int bone2 = boneConnections[i].bone2;
+
+                Vector3 vectorBone1 = driver.read_memory<Vector3>(boneArray + bone1 * 32);
+                Vector3 vectorBone2 = driver.read_memory<Vector3>(boneArray + bone2 * 32);
+
+                Vector3 boneInWorld1 = vectorBone1.World_To_Screen(view_matrix);
+                Vector3 boneInWorld2 = vectorBone2.World_To_Screen(view_matrix);
+
+
+                Render::DrawLine(boneInWorld1.x, boneInWorld2.x, boneInWorld1.y, boneInWorld2.y, 1.4f, enemyColor);
+            }
         }
 
         ImGui::Render();
@@ -244,7 +255,6 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show)
     // exit
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
-
     ImGui::DestroyContext();
 
     if (swap_chain) swap_chain->Release();
@@ -258,37 +268,3 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show)
 
     return 0;
 }
-
-
-//int main()
-//{
-//    std::cout << "Benoon!\n";
-//
-//    const DWORD pid = get_process_id(L"cs2.exe");
-//    const uintptr_t module = get_module_base(pid, L"client.dll");
-//
-//    if (pid == 0) {
-//        std::cout << "Failed to find cs2\n";
-//        std::cin.get();
-//        return 1;
-//    }
-//
-//    const HANDLE driverHandle = CreateFileW(L"\\\\.\\BenoonDriver", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
-//    if (driverHandle == INVALID_HANDLE_VALUE) {
-//        std::cout << "Failed to create driver handle.\n";
-//        std::cin.get();
-//        return 1;
-//    }
-//
-//    Memory driver(driverHandle, pid);
-//
-//    int value = driver.read_memory<int>(0x02F42380);
-//    std::cout << value;
-//    std::cin.get();
-//
-//    CloseHandle(driverHandle);
-//
-//    std::cin.get();
-//
-//    return 0;
-//}

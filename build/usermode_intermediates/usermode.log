@@ -1,29 +1,21 @@
 ﻿cl : command line  warning D9025: overriding '/sdl' with '/GS-'
   main.cpp
+C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '../usermode/src/main.cpp')
+  
+C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '../usermode/src/main.cpp')
+  
+C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '../usermode/src/main.cpp')
+  
+C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  (compiling source file '../usermode/src/main.cpp')
+  
 C:\Data\GitProjects\IOCTL\usermode\include\vector.h(61,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
+  (compiling source file '../usermode/src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\vector.h(62,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
+  (compiling source file '../usermode/src/main.cpp')
   
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(20,99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(20,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(20,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(20,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(20,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\src\main.cpp(230,17): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Data\GitProjects\IOCTL\usermode\src\main.cpp(228,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Data\GitProjects\IOCTL\usermode\src\main.cpp(227,17): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Data\GitProjects\IOCTL\usermode\src\main.cpp(226,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Data\GitProjects\IOCTL\usermode\src\main.cpp(225,30): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   usermode.vcxproj -> C:\Data\GitProjects\IOCTL\build\usermode.exe

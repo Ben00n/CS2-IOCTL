@@ -8,3 +8,5 @@ C:\Data\GitProjects\IOCTL\usermode\external\ImGui\imgui_widgets.cpp;C:\Data\GitP
 C:\Data\GitProjects\IOCTL\usermode\src\memory.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\memory.obj
 C:\Data\GitProjects\IOCTL\usermode\src\helpers.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\helpers.obj
 C:\Data\GitProjects\IOCTL\usermode\src\main.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\main.obj
+C:\Data\GitProjects\IOCTL\usermode\src\overlay.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\overlay.obj
+C:\Data\GitProjects\IOCTL\usermode\src\renderer.cpp;C:\Data\GitProjects\IOCTL\build\usermode_intermediates\renderer.obj

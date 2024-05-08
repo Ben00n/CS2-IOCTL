@@ -1,19 +1,14 @@
 ﻿  Building 'kernelmode' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping C:\Data\GitProjects\IOCTL\build\kernelmode_intermediates\kernelmode.inf
-  Stamping [Version] section with DriverVer=05/08/2024,22.44.12.161
+  Stamping [Version] section with DriverVer=05/09/2024,0.27.50.132
   kernelmode.vcxproj -> C:\Data\GitProjects\IOCTL\build\kernelmode.sys
   Driver is 'Universal'.
   .........................
-  Signability test complete.
+  Signability test failed.
   
   Errors:
-  None
+  22.9.7: DriverVer set to a date in the future (postdated DriverVer not allowed) in kernelmode\kernelmode.inf.
   
   Warnings:
   None
-  
-  Catalog generation complete.
-  C:\Data\GitProjects\IOCTL\build\kernelmode\kernelmode.cat
-  Done Adding Additional Store
-  Successfully signed: C:\Data\GitProjects\IOCTL\build\kernelmode\kernelmode.cat
-  
+C:\Data\GitProjects\IOCTL\build\kernelmode_intermediates\inf2catOutput.log : Inf2Cat error -2: "Inf2Cat, signability test failed." Double click to see the tool output.

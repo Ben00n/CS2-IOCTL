@@ -10,7 +10,6 @@
 #include "../external/ImGui/imgui_impl_win32.h"
 #include "overlay.h"
 #include "renderer.h"
-#include "menu.h"
 
 INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
     int screenWidth = GetSystemMetrics(SM_CXSCREEN);
@@ -26,7 +25,6 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
     ImGui_ImplDX11_Init(renderer.GetDevice(), renderer.GetDeviceContext());
 
     bool on = true;
-    Menu menu;
 
     const DWORD pid = get_process_id(L"cs2.exe");
     const uintptr_t module = get_module_base(pid, L"client.dll");
@@ -72,68 +70,66 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
-        menu.Render();
-
         renderer.BeginFrame();
 
-        if (menu.IsESPEnabled()) {
-            for (int playerIndex = 1; playerIndex <= 31; ++playerIndex) {
-                uintptr_t listen = driver.read_memory<uintptr_t>(entity_list + (8 * (playerIndex & 0x7FFF) >> 9) + 16);
-                if (!listen)
-                    continue;
 
-                uintptr_t player = driver.read_memory<uintptr_t>(listen + 120 * (playerIndex & 0x1FF));
-                if (!player)
-                    continue;
+        for (int playerIndex = 1; playerIndex <= 31; ++playerIndex) {
+            uintptr_t listen = driver.read_memory<uintptr_t>(entity_list + (8 * (playerIndex & 0x7FFF) >> 9) + 16);
+            if (!listen)
+                continue;
 
-                int playerTeam = driver.read_memory<int>(player + offsets::m_iTeamNum);
-                if (playerTeam == localTeam)
-                    continue;
+            uintptr_t player = driver.read_memory<uintptr_t>(listen + 120 * (playerIndex & 0x1FF));
+            if (!player)
+                continue;
 
-                uint32_t playerPawn = driver.read_memory<uint32_t>(player + offsets::dwPlayerPawn);
-                uintptr_t listen2 = driver.read_memory<uintptr_t>(entity_list + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16);
-                if (!listen2)
-                    continue;
+            int playerTeam = driver.read_memory<int>(player + offsets::m_iTeamNum);
+            if (playerTeam == localTeam)
+                continue;
 
-                uintptr_t pCSPlayerPawn = driver.read_memory<uintptr_t>(listen2 + 120 * (playerPawn & 0x1FF));
-                if (!pCSPlayerPawn || pCSPlayerPawn == localPlayer)
-                    continue;
+            uint32_t playerPawn = driver.read_memory<uint32_t>(player + offsets::dwPlayerPawn);
+            uintptr_t listen2 = driver.read_memory<uintptr_t>(entity_list + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16);
+            if (!listen2)
+                continue;
 
-                uintptr_t gameScene = driver.read_memory<uintptr_t>(pCSPlayerPawn + 0x318);
-                uintptr_t boneArray = driver.read_memory<uintptr_t>(gameScene + 0x160 + 0x80);
+            uintptr_t pCSPlayerPawn = driver.read_memory<uintptr_t>(listen2 + 120 * (playerPawn & 0x1FF));
+            if (!pCSPlayerPawn || pCSPlayerPawn == localPlayer)
+                continue;
 
-                int health = driver.read_memory<int>(pCSPlayerPawn + offsets::m_iHealth);
-                if (health <= 0 || health > 100)
-                    continue;
+            uintptr_t gameScene = driver.read_memory<uintptr_t>(pCSPlayerPawn + 0x318);
+            uintptr_t boneArray = driver.read_memory<uintptr_t>(gameScene + 0x160 + 0x80);
 
-                Vector3 head = driver.read_memory<Vector3>(boneArray + bones::head * 32);
-                Vector3 screenHead = head.World_To_Screen(view_matrix);
-                if (screenHead.z <= 0.01f)
-                    continue;
+            int health = driver.read_memory<int>(pCSPlayerPawn + offsets::m_iHealth);
+            if (health <= 0 || health > 100)
+                continue;
 
-                char healthText[10];
-                snprintf(healthText, sizeof(healthText), "%d", health);
+            Vector3 head = driver.read_memory<Vector3>(boneArray + bones::head * 32);
+            Vector3 screenHead = head.World_To_Screen(view_matrix);
+            if (screenHead.z <= 0.01f)
+                continue;
 
-                Vector3 labelPos = head;
-                labelPos.z += 30.0f;
-                Vector3 screenLabelPos = labelPos.World_To_Screen(view_matrix);
-                if (screenLabelPos.z > 0.01f)
-                    Render::DrawLabel(healthText, screenLabelPos.x, screenLabelPos.y, RGB{ 255, 0, 0 }, true);
+            char healthText[10];
+            snprintf(healthText, sizeof(healthText), "%d", health);
 
-                for (int i = 0; i < boneConnectionsSize; i++) {
-                    int bone1 = boneConnections[i].bone1;
-                    int bone2 = boneConnections[i].bone2;
+            Vector3 labelPos = head;
+            labelPos.z += 30.0f;
+            Vector3 screenLabelPos = labelPos.World_To_Screen(view_matrix);
+            if (screenLabelPos.z > 0.01f)
+                Render::DrawLabel(healthText, screenLabelPos.x, screenLabelPos.y, RGB{ 255, 0, 0 }, true);
 
-                    Vector3 vectorBone1 = driver.read_memory<Vector3>(boneArray + bone1 * 32);
-                    Vector3 vectorBone2 = driver.read_memory<Vector3>(boneArray + bone2 * 32);
+            for (int i = 0; i < boneConnectionsSize; i++) {
+                int bone1 = boneConnections[i].bone1;
+                int bone2 = boneConnections[i].bone2;
 
-                    Vector3 boneInWorld1 = vectorBone1.World_To_Screen(view_matrix);
-                    Vector3 boneInWorld2 = vectorBone2.World_To_Screen(view_matrix);
+                Vector3 vectorBone1 = driver.read_memory<Vector3>(boneArray + bone1 * 32);
+                Vector3 vectorBone2 = driver.read_memory<Vector3>(boneArray + bone2 * 32);
 
-                    Render::DrawLine(boneInWorld1.x, boneInWorld2.x, boneInWorld1.y, boneInWorld2.y, 1.4f, enemyColor);
-                }
+                Vector3 boneInWorld1 = vectorBone1.World_To_Screen(view_matrix);
+                Vector3 boneInWorld2 = vectorBone2.World_To_Screen(view_matrix);
+
+                Render::DrawLine(boneInWorld1.x, boneInWorld2.x, boneInWorld1.y, boneInWorld2.y, 1.4f, enemyColor);
             }
         }
+
 
         ImGui::Render();
         ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());

@@ -3,7 +3,8 @@
 #include "../external/ImGui/imgui.h"
 #include "../external/ImGui/imgui_impl_win32.h"
 
-Overlay::Overlay(HINSTANCE hInstance, const wchar_t* className, const wchar_t* windowName, int width, int height) {
+Overlay::Overlay(HINSTANCE hInstance, const wchar_t* className, const wchar_t* windowName, int width, int height)
+{
     m_wc = { sizeof(WNDCLASSEXW), CS_HREDRAW | CS_VREDRAW, WndProc, 0, 0, hInstance, nullptr, nullptr, nullptr, nullptr, className, nullptr };
     RegisterClassExW(&m_wc);
 
@@ -20,7 +21,8 @@ Overlay::Overlay(HINSTANCE hInstance, const wchar_t* className, const wchar_t* w
     POINT diff{};
     ClientToScreen(m_hwnd, &diff);
 
-    const MARGINS margins{
+    const MARGINS margins 
+    {
         windowArea.left + (diff.x - windowArea.left),
         windowArea.top + (diff.y - windowArea.top),
         clientArea.right,
@@ -33,17 +35,19 @@ Overlay::Overlay(HINSTANCE hInstance, const wchar_t* className, const wchar_t* w
     UpdateWindow(m_hwnd);
 }
 
-Overlay::~Overlay() {
+Overlay::~Overlay()
+{
     DestroyWindow(m_hwnd);
     UnregisterClassW(m_wc.lpszClassName, m_wc.hInstance);
 }
 
-LRESULT CALLBACK Overlay::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK Overlay::WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
     extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
-    if (ImGui_ImplWin32_WndProcHandler(hwnd, message, wParam, lParam)) {
+    if (ImGui_ImplWin32_WndProcHandler(hwnd, message, wParam, lParam)) 
         return true;
-    }
+
 
     switch (message) {
     case WM_DESTROY:

@@ -185,6 +185,13 @@ void gui::DestroyImGui() noexcept
 
 void gui::BeginRender() noexcept
 {
+    MSG message;
+    while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
+    {
+        TranslateMessage(&message);
+        DispatchMessage(&message);
+    }
+
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
@@ -192,8 +199,6 @@ void gui::BeginRender() noexcept
 
 void gui::EndRender() noexcept
 {
-    ImGui::EndFrame();
-
     ImGui::Render();
 
     deviceContext->OMSetRenderTargets(1, &renderTargetView, NULL);

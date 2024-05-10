@@ -1,35 +1,25 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (C:\Data\GitProjects\IOCTL\build\usermode_intermediates\) contains files shared from another project (user.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-cl : command line  warning D9025: overriding '/sdl' with '/GS-'
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_win32.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  memory.cpp
-C:\Data\GitProjects\IOCTL\usermode\src\memory.cpp(16,21): warning C4312: 'reinterpret_cast': conversion from 'DWORD' to 'HANDLE' of greater size
-  helpers.cpp
-  main.cpp
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\vector.h(61,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-C:\Data\GitProjects\IOCTL\usermode\include\vector.h(62,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'src/main.cpp')
-  
-  overlay.cpp
-  renderer.cpp
-  Generating Code...
-  usermode.vcxproj -> C:\Data\GitProjects\IOCTL\build\usermode.exe
+imgui.obj : warning LNK4099: PDB '' was not found with 'imgui.obj' or at ''; linking object as if no debug info
+imgui_demo.obj : warning LNK4099: PDB '' was not found with 'imgui_demo.obj' or at ''; linking object as if no debug info
+imgui_draw.obj : warning LNK4099: PDB '' was not found with 'imgui_draw.obj' or at ''; linking object as if no debug info
+imgui_impl_dx11.obj : warning LNK4099: PDB '' was not found with 'imgui_impl_dx11.obj' or at ''; linking object as if no debug info
+imgui_impl_win32.obj : warning LNK4099: PDB '' was not found with 'imgui_impl_win32.obj' or at ''; linking object as if no debug info
+imgui_tables.obj : warning LNK4099: PDB '' was not found with 'imgui_tables.obj' or at ''; linking object as if no debug info
+imgui_widgets.obj : warning LNK4099: PDB '' was not found with 'imgui_widgets.obj' or at ''; linking object as if no debug info
+memory.obj : warning LNK4099: PDB '' was not found with 'memory.obj' or at ''; linking object as if no debug info
+main.obj : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MDd_DynamicDebug' doesn't match value 'MTd_StaticDebug' in helpers.obj
+helpers.obj : warning LNK4099: PDB '' was not found with 'helpers.obj' or at ''; linking object as if no debug info
+main.obj : warning LNK4099: PDB '' was not found with 'main.obj' or at ''; linking object as if no debug info
+overlay.obj : warning LNK4099: PDB '' was not found with 'overlay.obj' or at ''; linking object as if no debug info
+renderer.obj : warning LNK4099: PDB '' was not found with 'renderer.obj' or at ''; linking object as if no debug info
+LINK : warning LNK4098: defaultlib 'MSVCRTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::CreateHWindow(wchar_t const *,wchar_t const *)" (?CreateHWindow@gui@@YAXPEB_W0@Z) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::DestroyHWindow(void)" (?DestroyHWindow@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "bool __cdecl gui::CreateDevice(void)" (?CreateDevice@gui@@YA_NXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::DestroyDevice(void)" (?DestroyDevice@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::CreateImGui(void)" (?CreateImGui@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::DestroyImGui(void)" (?DestroyImGui@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::BeginRender(void)" (?BeginRender@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::EndRender(void)" (?EndRender@gui@@YAXXZ) referenced in function WinMain
+main.obj : error LNK2019: unresolved external symbol "void __cdecl gui::Render(void)" (?Render@gui@@YAXXZ) referenced in function WinMain
+C:\Data\GitProjects\IOCTL\build\usermode.exe : fatal error LNK1120: 9 unresolved externals

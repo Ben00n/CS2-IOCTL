@@ -1,4 +1,5 @@
 #include "gui.h"
+#include "globals.h"
 
 #include "../external/ImGui/imgui.h"
 #include "../external/ImGui/imgui_impl_dx11.h"
@@ -223,6 +224,11 @@ void gui::Render() noexcept
     ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
     ImGui::Begin("Ben00n", &exit, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoMove);
 
-    ImGui::Button("ESP");
+    ImGui::Checkbox("Skeleton ESP", &globals::skeletonEsp);
+    ImGui::ColorEdit4("Skeleton Color", globals::skeletonColor);
+
+    ImGui::Checkbox("Health ESP", &globals::healthEsp);
+    ImGui::ColorEdit4("Health Color", globals::healthColor);
+
     ImGui::End();
 }

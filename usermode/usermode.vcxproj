@@ -154,7 +154,6 @@
     <ClCompile Include="external\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="external\ImGui\imgui_tables.cpp" />
     <ClCompile Include="external\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="src\memory.cpp" />
     <ClCompile Include="src\helpers.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\overlay.cpp" />

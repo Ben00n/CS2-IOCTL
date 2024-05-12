@@ -77,9 +77,8 @@ namespace benoon_driver
         NTSTATUS status = IoCreateDevice(driver_object, 0, &device_name, FILE_DEVICE_UNKNOWN, FILE_DEVICE_SECURE_OPEN, FALSE, &device_object);
 
         if (status != STATUS_SUCCESS)
-        {
             return status;
-        }
+
 
         SetFlag(device_object->Flags, DO_BUFFERED_IO);
 

@@ -21,9 +21,6 @@
     <ClCompile Include="src\helpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\memory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="external\ImGui\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

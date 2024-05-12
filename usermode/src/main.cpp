@@ -35,7 +35,7 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
         return 1;
     }
 
-    const HANDLE driverHandle = CreateFileW(L"\\\\.\\BenoonDriver", GENERIC_READ | GENERIC_WRITE, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
+    const HANDLE driverHandle = CreateFileW(L"\\\\.\\BenoonDriver", GENERIC_READ, 0, nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (driverHandle == INVALID_HANDLE_VALUE) {
         std::cout << "Failed to create driver handle.\n";
         std::cin.get();

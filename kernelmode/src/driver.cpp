@@ -79,6 +79,12 @@ namespace benoon_driver
         if (status != STATUS_SUCCESS)
             return status;
 
+        UNICODE_STRING symbolic_link = { };
+        RtlInitUnicodeString(&symbolic_link, L"\\DosDevices\\BenoonDriver");
+
+        status = IoCreateSymbolicLink(&symbolic_link, &device_name);
+        if (status != STATUS_SUCCESS)
+            return status;
 
         SetFlag(device_object->Flags, DO_BUFFERED_IO);
 

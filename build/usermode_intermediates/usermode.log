@@ -1,34 +1,21 @@
 ﻿cl : command line  warning D9025: overriding '/sdl' with '/GS-'
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_dx11.cpp
-  imgui_impl_win32.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-  helpers.cpp
   main.cpp
 C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,66): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\render.h(24,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\vector.h(61,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
 C:\Data\GitProjects\IOCTL\usermode\include\vector.h(62,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file '../usermode/src/main.cpp')
+  (compiling source file 'src/main.cpp')
   
-  memory.cpp
-C:\Data\GitProjects\IOCTL\usermode\src\memory.cpp(16,21): warning C4312: 'reinterpret_cast': conversion from 'DWORD' to 'HANDLE' of greater size
-  overlay.cpp
-  renderer.cpp
-  Generating Code...
   usermode.vcxproj -> C:\Data\GitProjects\IOCTL\build\usermode.exe

@@ -11,4 +11,5 @@ namespace offsets
     constexpr std::ptrdiff_t dwPlayerPawn = 0x7E4;
     constexpr std::ptrdiff_t m_iTeamNum = 0x3CB;
     constexpr std::ptrdiff_t m_vec_Origin = 0x80;
+    constexpr std::ptrdiff_t m_iszPlayerName = 0x638;
 }

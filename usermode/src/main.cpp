@@ -72,40 +72,32 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
 
         renderer.BeginFrame();
 
-
         for (int playerIndex = 1; playerIndex <= 31; ++playerIndex) {
             uintptr_t listen = driver.read_memory<uintptr_t>(entity_list + (8 * (playerIndex & 0x7FFF) >> 9) + 16);
-            if (!listen)
-                continue;
+            if (!listen) continue;
 
             uintptr_t player = driver.read_memory<uintptr_t>(listen + 120 * (playerIndex & 0x1FF));
-            if (!player)
-                continue;
+            if (!player) continue;
 
             int playerTeam = driver.read_memory<int>(player + offsets::m_iTeamNum);
-            if (playerTeam == localTeam)
-                continue;
+            if (playerTeam == localTeam) continue;
 
             uint32_t playerPawn = driver.read_memory<uint32_t>(player + offsets::dwPlayerPawn);
             uintptr_t listen2 = driver.read_memory<uintptr_t>(entity_list + 0x8 * ((playerPawn & 0x7FFF) >> 9) + 16);
-            if (!listen2)
-                continue;
+            if (!listen2) continue;
 
             uintptr_t pCSPlayerPawn = driver.read_memory<uintptr_t>(listen2 + 120 * (playerPawn & 0x1FF));
-            if (!pCSPlayerPawn || pCSPlayerPawn == localPlayer)
-                continue;
+            if (!pCSPlayerPawn || pCSPlayerPawn == localPlayer) continue;
 
             uintptr_t gameScene = driver.read_memory<uintptr_t>(pCSPlayerPawn + 0x318);
             uintptr_t boneArray = driver.read_memory<uintptr_t>(gameScene + 0x160 + 0x80);
 
             int health = driver.read_memory<int>(pCSPlayerPawn + offsets::m_iHealth);
-            if (health <= 0 || health > 100)
-                continue;
+            if (health <= 0 || health > 100) continue;
 
             Vector3 head = driver.read_memory<Vector3>(boneArray + bones::head * 32);
             Vector3 screenHead = head.World_To_Screen(view_matrix);
-            if (screenHead.z <= 0.01f)
-                continue;
+            if (screenHead.z <= 0.01f) continue;
 
             char healthText[10];
             snprintf(healthText, sizeof(healthText), "%d", health);
@@ -115,6 +107,23 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
             Vector3 screenLabelPos = labelPos.World_To_Screen(view_matrix);
             if (screenLabelPos.z > 0.01f)
                 Render::DrawLabel(healthText, screenLabelPos.x, screenLabelPos.y, RGB{ 255, 0, 0 }, true);
+
+            char playerNameBuffer[128];
+            memset(playerNameBuffer, 0, sizeof(playerNameBuffer));
+
+            for (int i = 0; i < sizeof(playerNameBuffer) - 1; ++i) {
+                char c = driver.read_memory<char>(player + offsets::m_iszPlayerName + i);
+                if (c == '\0' || c == ' ') break;
+                playerNameBuffer[i] = c;
+            }
+
+            if (playerNameBuffer[0] != '\0') {
+                Vector3 nameLabelPos = head;
+                nameLabelPos.z += 50.0f;
+                Vector3 screenNameLabelPos = nameLabelPos.World_To_Screen(view_matrix);
+                if (screenNameLabelPos.z > 0.01f)
+                    Render::DrawLabel(playerNameBuffer, screenNameLabelPos.x, screenNameLabelPos.y, RGB{ 0, 255, 255 }, true);
+            }
 
             for (int i = 0; i < boneConnectionsSize; i++) {
                 int bone1 = boneConnections[i].bone1;
@@ -130,14 +139,12 @@ INT APIENTRY WinMain(HINSTANCE instance, HINSTANCE, PSTR, int cmd_show) {
             }
         }
 
-
         ImGui::Render();
         ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
         renderer.EndFrame();
     }
 
-    // exit
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
     ImGui::DestroyContext();

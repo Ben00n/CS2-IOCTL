@@ -6,4 +6,6 @@ This program is entirely external.
 
 ![image](https://github.com/user-attachments/assets/db6c384d-bf8a-4172-9881-e5948ac4cb43)
 
-In order to make it work, update the offsets using: https://github.com/a2x/cs2-dumper
+In order to make it work:
+1) map the driver using: https://github.com/TheCruZ/kdmapper
+2) update the offsets using: https://github.com/a2x/cs2-dumper
